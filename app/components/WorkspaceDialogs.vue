@@ -35,7 +35,11 @@ function submitProject() {
   >
     <template #body>
       <form id="task-form" class="form-stack" @submit.prevent="submitTask">
-        <SFormField label="Task name" required>
+        <SFormField
+          label="Task name"
+          required
+          :ui="{ required: { 'aria-hidden': true } }"
+        >
           <SInput
             v-model="title"
             placeholder="What needs to happen?"
@@ -73,7 +77,11 @@ function submitProject() {
         class="form-stack"
         @submit.prevent="submitProject"
       >
-        <SFormField label="Project name" required>
+        <SFormField
+          label="Project name"
+          required
+          :ui="{ required: { 'aria-hidden': true } }"
+        >
           <SInput
             v-model="projectName"
             placeholder="Your next big thing"

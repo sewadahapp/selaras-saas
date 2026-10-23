@@ -292,7 +292,15 @@ test('conversation members open in a right panel and follow the selected chat', 
       .getByRole('listitem'),
   ).toHaveCount(4)
   await expect(members.getByText('Sam Rivera', { exact: true })).toBeVisible()
-  await expect(toggle).toHaveAttribute('aria-expanded', 'true')
+  // A modal slideover hides the background from the accessibility tree.
+  // Include its hidden trigger only for this DOM state assertion.
+  await expect(
+    page.getByRole('button', {
+      name: 'View conversation members',
+      exact: true,
+      includeHidden: true,
+    }),
+  ).toHaveAttribute('aria-expanded', 'true')
   if (isMobile) {
     await expect
       .poll(() =>

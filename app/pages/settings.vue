@@ -24,7 +24,11 @@ function resetDemo() {
       <h2>Workspace details</h2>
       <p class="muted mb-5">The name your team will see in the sidebar.</p>
       <form class="form-stack" @submit.prevent="renameWorkspace(name)">
-        <SFormField label="Workspace name" required>
+        <SFormField
+          label="Workspace name"
+          required
+          :ui="{ required: { 'aria-hidden': true } }"
+        >
           <SInput v-model="name" required maxlength="80" class="w-full" />
         </SFormField>
         <div>

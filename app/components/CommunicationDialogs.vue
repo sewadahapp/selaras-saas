@@ -54,7 +54,11 @@ function resetDemo() {
   >
     <template #body>
       <form id="compose-mail" class="form-stack" @submit.prevent="submitMail">
-        <SFormField label="To" required>
+        <SFormField
+          label="To"
+          required
+          :ui="{ required: { 'aria-hidden': true } }"
+        >
           <SInput
             v-model="recipient"
             type="email"
@@ -64,7 +68,11 @@ function resetDemo() {
             class="w-full"
           />
         </SFormField>
-        <SFormField label="Subject" required>
+        <SFormField
+          label="Subject"
+          required
+          :ui="{ required: { 'aria-hidden': true } }"
+        >
           <SInput
             v-model="subject"
             required
@@ -73,7 +81,11 @@ function resetDemo() {
             class="w-full"
           />
         </SFormField>
-        <SFormField label="Message" required>
+        <SFormField
+          label="Message"
+          required
+          :ui="{ required: { 'aria-hidden': true } }"
+        >
           <STextarea
             v-model="body"
             required
@@ -106,8 +118,17 @@ function resetDemo() {
   >
     <template #body>
       <form id="new-chat" @submit.prevent="submitChat">
-        <SFormField label="Teammate" required>
-          <SSelect v-model="teammate" :items="teammates" class="w-full" />
+        <SFormField
+          label="Teammate"
+          required
+          :ui="{ required: { 'aria-hidden': true } }"
+        >
+          <SSelect
+            v-model="teammate"
+            :items="teammates"
+            required
+            class="w-full"
+          />
         </SFormField>
       </form>
     </template>
