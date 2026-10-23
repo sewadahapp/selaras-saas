@@ -145,13 +145,13 @@ npm run build
 npm run test:e2e
 ```
 
-Playwright starts the production server on port 3020. Set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` if you want to use an existing Chromium installation. The GitHub Actions validation workflow installs its browser and runs the checks.
+Playwright starts the production server on port 3020. Set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` if you want to use an existing Chromium installation. Automatic CI runs lint, type checks, unit tests, and a production build. Browser tests run separately on demand: open **Actions → Browser tests → Run workflow** in GitHub. That workflow installs Chromium and uploads traces in the `playwright-results` artifact when tests fail. Browser test failures do not block the automatic validation or Pages deployment workflows.
 
 ## Deploy
 
 For Node hosting, run `npm run build`, then `node .output/server/index.mjs`. Set `NITRO_HOST` and `NITRO_PORT` as needed.
 
-For static hosting, run `npm run generate` and deploy `.output/public`. The included GitHub Pages workflow runs lint, type checks, unit tests, a production build, and desktop/mobile browser tests before generating and publishing static output after a merge or push to `master`. It configures the repository base path automatically. Enable **Settings → Pages → Build and deployment → Source → GitHub Actions** in your own repository. For a project generated from this starter, update the workflow branch if you use a default branch other than `master`. Remove the workflow if using a different host.
+For static hosting, run `npm run generate` and deploy `.output/public`. The included GitHub Pages workflow runs lint, type checks, unit tests, and a production build before generating and publishing static output after a merge or push to `master`. It configures the repository base path automatically. Enable **Settings → Pages → Build and deployment → Source → GitHub Actions** in your own repository. For a project generated from this starter, update the workflow branch if you use a default branch other than `master`. Remove the workflow if using a different host.
 
 MIT licensed. See [LICENSE](LICENSE). Component documentation: [Selaras](https://selarasui.my.id/).
 
